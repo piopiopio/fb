@@ -30,5 +30,6 @@
 <ul>
   <li *ngFor="let item of data">email: {{item.email}} password: {{item.password}} 
     <button (click)="updateData(item.id)">Update</button>
+    <button (click)="deleteData(item.id)">Delete</button>
   </li>
 </ul>

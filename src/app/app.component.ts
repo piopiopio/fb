@@ -14,6 +14,7 @@ import {
   doc,
   updateDoc,
   getDocs,
+  deleteDoc,
 } from '@angular/fire/firestore';
 @Component({
   selector: 'app-root',
@@ -62,11 +63,16 @@ export class AppComponent implements OnInit {
     addDoc(dbInstance, value)
       .then(() => alert('Data sent'))
       .catch((err) => alert('error:: ' + err.message));
+      this.getData();
   }
   updateData(id: any) {
     console.log(id);
-   let dataToUpdate = doc(this.firestore, 'testCollection', id);
+    let dataToUpdate = doc(this.firestore, 'testCollection', id);
     updateDoc(dataToUpdate, { email: 'tessstZmiana' });
+    this.getData();
+  }
+  deleteData(id: any) {
+    deleteDoc(doc(this.firestore, 'testCollection', id));
     this.getData();
   }
 }
